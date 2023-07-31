@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Ecommerce.Interface;
+using Ecommerce.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +34,10 @@ public class Program
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog();
+
+            builder.Services.AddScoped<ICategoryAppService, CategoryService>();
+
+
             await builder.AddApplicationAsync<EcommerceWebModule>();
             var app = builder.Build();
             await app.InitializeApplicationAsync();

@@ -1,0 +1,26 @@
+﻿@page
+@using Ecommerce.Web.Pages.Categories
+@using Microsoft.Extensions.Localization
+@using Ecommerce.Localization
+@model IndexModel
+@inject IStringLocalizer<EcommerceResource> L
+@section scripts
+    {
+    <abp-script src="/Pages/Categories/Index.cshtml.js" />
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <h2>@L["Menu:Categories"]</h2>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                <abp-button id="NewCatgoryButton" text="@L["NewCategory"].Value" icon="plus" button-type="Primary" />
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table id="CategoriesTable" striped-rows="true" />
+    </abp-card-body>
+</abp-card>

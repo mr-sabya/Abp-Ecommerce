@@ -34,6 +34,20 @@ public class EcommerceMenuContributor : IMenuContributor
             )
         );
 
+        context.Menu.AddItem(
+            new ApplicationMenuItem(
+                "ProductManagement",
+                l["Menu:ProductManagement"],
+                icon: "fas fa-shopping-cart"
+                ).AddItem(
+                new ApplicationMenuItem(
+                    "ProductManagement.Categories",
+                    l["Menu:Categories"],
+                    url: "/Categories"
+                    )
+                )
+                );
+
         if (MultiTenancyConsts.IsEnabled)
         {
             administration.SetSubItemOrder(TenantManagementMenuNames.GroupName, 1);
